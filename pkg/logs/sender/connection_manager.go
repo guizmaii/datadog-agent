@@ -47,9 +47,9 @@ func (cm *ConnectionManager) NewConnection() net.Conn {
 
 	cm.firstConn.Do(func() {
 		if cm.proxyAddress != "" {
-			log.Infof("Connecting to the backend: %v, via socks5: %v", cm.serverConfig.Address(), cm.proxyAddress)
+			log.Infof("Connecting to the backend: %v, via socks5: %v, with SSL: %v", cm.serverConfig.Address(), cm.proxyAddress, cm.serverConfig.UseSSL)
 		} else {
-			log.Infof("Connecting to the backend: %v", cm.serverConfig.Address())
+			log.Infof("Connecting to the backend: %v, with SSL: %v", cm.serverConfig.Address(), cm.serverConfig.UseSSL)
 		}
 	})
 
